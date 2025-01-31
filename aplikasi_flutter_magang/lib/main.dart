@@ -55,7 +55,7 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  int _counter = 0;
+  // int _counter = 0;
 
   void _incrementCounter() {
     setState(() {
@@ -64,7 +64,7 @@ class _MyHomePageState extends State<MyHomePage> {
       // so that the display can reflect the updated values. If we changed
       // _counter without calling setState(), then the build method would not be
       // called again, and so nothing would appear to happen.
-      _counter++;
+      // _counter++;
     });
   }
 
@@ -96,18 +96,17 @@ class _MyHomePageState extends State<MyHomePage> {
         ],
       ),
       body: Container(
-        height: 300,
-        width: double.infinity,
-        margin: const EdgeInsets.all(10),
-        decoration: BoxDecoration(
-          color: Colors.grey,
-          borderRadius: BorderRadius.circular(20),
-          boxShadow: [
-            BoxShadow(
-              color: Colors.black.withOpacity(0.2),
-              blurRadius: 15.0,
-              offset: Offset.zero,
-            ),
+        padding: const EdgeInsets.all(10),
+        child: const Column(
+          children: [
+            Text(
+              "Discover the most modern furniture",
+              style: TextStyle(
+                  color: Colors.black,
+                  fontSize: 22.0,
+                  fontWeight: FontWeight.w500,
+                  letterSpacing: 1),
+            )
           ],
         ),
       ),
