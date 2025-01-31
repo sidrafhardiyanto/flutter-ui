@@ -384,6 +384,41 @@ class _MyRadioState extends State<MyRadio> {
   }
 }
 
+class MyCheckbox extends StatefulWidget {
+  const MyCheckbox({super.key});
+
+  @override
+  State<MyCheckbox> createState() => _MyCheckboxState();
+}
+
+class _MyCheckboxState extends State<MyCheckbox> {
+  bool isChecked = false;
+
+  @override
+  Widget build(BuildContext context) {
+    return Row(
+      children: [
+        Checkbox(
+          value: isChecked,
+          onChanged: (value) {
+            setState(() {
+              if (value != null) {
+                isChecked = value;
+                print("setuju: $isChecked");
+              }
+            });
+          },
+        ),
+        const SizedBox(width: 4),
+        const Text(
+          "Setuju syarat dan ketentuan.",
+          style: TextStyle(decoration: TextDecoration.underline),
+        ),
+      ],
+    );
+  }
+}
+
 class _MyHomePageState extends State<MyHomePage> {
   // int _counter = 0;
 
@@ -432,12 +467,13 @@ class _MyHomePageState extends State<MyHomePage> {
           children: [
             SizedBox(
               height: 300,
+            //   child: MyListView(),
+              // child: MyWrap(),
               // child: MyTextField(),
               // child: MyDropDown(),
               // child: MySwitch(),
-              child: MyRadio(),
-              // child: MyWrap(),
-            //   child: MyListView(),
+              // child: MyRadio(),
+              child: MyCheckbox(),
             ),
             Text(
               "Discover the most modern furniture",
