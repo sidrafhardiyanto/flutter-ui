@@ -287,6 +287,26 @@ class _MyHomePageState extends State<MyHomePage> {
                 ),
               ],
             ),
+            Center(
+              child: ElevatedButton(
+                onPressed: () {},
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: Colors.blue,
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(20.0),
+                  ),
+                  shadowColor: Colors.grey[20],
+                  elevation: 5.0,
+                ),
+                child: Text(
+                  "Add To Cart".toUpperCase(),
+                  style: const TextStyle(
+                      fontSize: 20.0,
+                      fontWeight: FontWeight.w500,
+                      color: Colors.white),
+                ),
+              ),
+            ),
             Padding(
               padding: EdgeInsets.only(
                 left: 20.0,
