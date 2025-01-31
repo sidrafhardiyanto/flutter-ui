@@ -54,6 +54,34 @@ class MyHomePage extends StatefulWidget {
   State<MyHomePage> createState() => _MyHomePageState();
 }
 
+class MyTextField extends StatefulWidget {
+  const MyTextField({super.key});
+
+  @override
+  State<MyTextField> createState() => _MyTextFieldState();
+}
+
+class _MyTextFieldState extends State<MyTextField> {
+  final textController = TextEditingController();
+
+  @override
+  Widget build(BuildContext context) {
+    return TextField(
+      maxLength: 20,
+      controller: textController,
+      decoration: const InputDecoration(
+        labelText: "Nama",
+        labelStyle: TextStyle(color: Colors.blueGrey),
+        enabledBorder: UnderlineInputBorder(
+          borderSide: BorderSide(color: Colors.blueGrey),
+        ),
+        helperText: "Masukkan nama",
+      ),
+      onChanged: (value) {},
+    );
+  }
+}
+
 class MyListView extends StatelessWidget {
   MyListView({super.key});
 
@@ -254,7 +282,8 @@ class _MyHomePageState extends State<MyHomePage> {
           children: [
             SizedBox(
               height: 300,
-              child: MyWrap(),
+              child: MyTextField(),
+              // child: MyWrap(),
             //   child: MyListView(),
             ),
             Text(
