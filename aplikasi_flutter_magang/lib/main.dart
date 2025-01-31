@@ -301,6 +301,12 @@ class _MyHomePageState extends State<MyHomePage> {
                 ),
               ),
             ),
+            AspectRatio(
+              aspectRatio: 180 / 240,
+              child: Container(
+                color: Colors.red,
+              ),
+            ),
             Expanded(
               child: GridView.builder(
                   gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
