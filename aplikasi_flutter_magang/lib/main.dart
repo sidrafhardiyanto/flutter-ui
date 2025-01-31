@@ -463,6 +463,51 @@ class _MyDialogState extends State<MyDialog> {
   }
 }
 
+class MyBottomSheet extends StatefulWidget {
+  const MyBottomSheet({super.key});
+
+  @override
+  State<MyBottomSheet> createState() => _MyBottomSheetState();
+}
+
+class _MyBottomSheetState extends State<MyBottomSheet> {
+  @override
+  Widget build(BuildContext context) {
+    return ElevatedButton(
+      onPressed: () async {
+        showModalBottomSheet<void>(
+          context: context,
+          builder: (BuildContext context) {
+            return Padding(
+              padding: const EdgeInsets.all(20),
+              child: SizedBox(
+                width: MediaQuery.of(context).size.width,
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    const Text('Your order was placed!'),
+                    const SizedBox(height: 20),
+                    ElevatedButton(
+                      style: ElevatedButton.styleFrom(
+                        backgroundColor: Colors.blue,
+                      ),
+                      onPressed: () {
+                        Navigator.pop(context);
+                      },
+                      child: const Text('Ok'),
+                    ),
+                  ],
+                ),
+              ),
+            );
+          },
+        );
+      },
+      child: const Text('Open BottomSheet'),
+    );
+  }
+}
 
 class _MyHomePageState extends State<MyHomePage> {
   // int _counter = 0;
@@ -510,17 +555,18 @@ class _MyHomePageState extends State<MyHomePage> {
         padding: const EdgeInsets.all(10),
         child: Column(
           children: [
-            SizedBox(
-              height: 300,
-            //   child: MyListView(),
-              // child: MyWrap(),
-              // child: MyTextField(),
-              // child: MyDropDown(),
-              // child: MySwitch(),
-              // child: MyRadio(),
-              // child: MyCheckbox(),
-              child: MyDialog(),
-            ),
+            // SizedBox(
+            //   height: 300,
+            // //   child: MyListView(),
+            //   // child: MyWrap(),
+            //   // child: MyTextField(),
+            //   // child: MyDropDown(),
+            //   // child: MySwitch(),
+            //   // child: MyRadio(),
+            //   // child: MyCheckbox(),
+            //   // child: MyDialog(),
+            //   // child: MyBottomSheet(),
+            // ),
             Text(
               "Discover the most modern furniture",
               textAlign: TextAlign.center,
@@ -675,7 +721,14 @@ class _MyHomePageState extends State<MyHomePage> {
             ),
             Center(
               child: ElevatedButton(
-                onPressed: () {},
+                onPressed: () {
+                  ScaffoldMessenger.of(context).showSnackBar(
+                    const SnackBar(
+                      backgroundColor: Colors.blue,
+                      content: Text('Your request is succesful'),
+                    ),
+                  );
+                },
                 style: ElevatedButton.styleFrom(
                   backgroundColor: Colors.blue,
                   shape: RoundedRectangleBorder(
