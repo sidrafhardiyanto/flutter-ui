@@ -112,6 +112,15 @@ class _MyHomePageState extends State<MyHomePage> {
             ElevatedButton(onPressed: () {},
               child: Text("Keranjang")
             ),
+            Icon(
+              Icons.home,
+              size: 32,
+            ),
+            Icon(
+              Icons.favorite,
+              color: Colors.red,
+              size: 36,
+            ),
           ],
         ),
       ),
