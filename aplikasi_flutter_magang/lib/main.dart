@@ -296,6 +296,36 @@ class _MyDropDownState extends State<MyDropDown> {
   }
 }
 
+class MySwitch extends StatefulWidget {
+  const MySwitch({super.key});
+
+  @override
+  State<MySwitch> createState() => _MySwitchState();
+}
+
+class _MySwitchState extends State<MySwitch> {
+  bool isOn = false;
+  @override
+  Widget build(BuildContext context) {
+    return Row(
+      children: [
+        const Text("Connect Instagram"),
+        Switch(
+          value: isOn,
+          onChanged: (bool? val) {
+            if (val != null) {
+              setState(() {
+                isOn = val;
+                print("Switch: $isOn");
+              });
+            }
+          },
+        ),
+      ],
+    );
+  }
+}
+
 class _MyHomePageState extends State<MyHomePage> {
   // int _counter = 0;
 
@@ -345,7 +375,8 @@ class _MyHomePageState extends State<MyHomePage> {
             SizedBox(
               height: 300,
               // child: MyTextField(),
-              child: MyDropDown(),
+              // child: MyDropDown(),
+              child: MySwitch(),
               // child: MyWrap(),
             //   child: MyListView(),
             ),
