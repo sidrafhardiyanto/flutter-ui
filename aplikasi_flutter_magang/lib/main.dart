@@ -193,6 +193,10 @@ class _MyHomePageState extends State<MyHomePage> {
         padding: const EdgeInsets.all(10),
         child: Column(
           children: [
+            SizedBox(
+              height: 300,
+              child: MyListView(),
+            ),
             Text(
               "Discover the most modern furniture",
               textAlign: TextAlign.center,
