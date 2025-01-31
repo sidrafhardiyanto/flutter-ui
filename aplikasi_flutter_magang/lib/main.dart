@@ -193,10 +193,10 @@ class _MyHomePageState extends State<MyHomePage> {
         padding: const EdgeInsets.all(10),
         child: Column(
           children: [
-            SizedBox(
-              height: 300,
-              child: MyListView(),
-            ),
+            // SizedBox(
+            //   height: 300,
+            //   child: MyListView(),
+            // ),
             Text(
               "Discover the most modern furniture",
               textAlign: TextAlign.center,
@@ -262,6 +262,62 @@ class _MyHomePageState extends State<MyHomePage> {
               Icons.favorite,
               color: Colors.red,
               size: 36,
+            ),
+            Stack(
+              clipBehavior: Clip.none,
+              children: [
+                Icon(
+                  Icons.shopping_cart,
+                  size: 50,
+                ),
+                Positioned(
+                  top: -4,
+                  right: -4,
+                  child: CircleAvatar(
+                    radius: 10,
+                    backgroundColor: Colors.red,
+                    child: Text(
+                      "1",
+                      style: TextStyle(
+                        fontSize: 10,
+                        color: Colors.white,
+                      ),
+                    ),
+                  ),
+                ),
+              ],
+            ),
+            Expanded(
+              child: GridView.builder(
+                  gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                      crossAxisCount: 2),
+                  itemCount: 50,
+                  itemBuilder: (BuildContext context, int index) {
+                    return Container(
+                      height: 100,
+                      width: double.infinity,
+                      margin: const EdgeInsets.all(5),
+                      decoration: BoxDecoration(
+                        color: Colors.blue,
+                        borderRadius: BorderRadius.circular(20),
+                        boxShadow: [
+                          BoxShadow(
+                            color: Colors.black.withOpacity(0.2),
+                            offset: Offset.zero,
+                            blurRadius: 15,
+                          ),
+                        ],
+                      ),
+                      child: Center(
+                          child: Text(
+                        (index + 1).toString(),
+                        style: const TextStyle(
+                          fontSize: 16,
+                          color: Colors.white,
+                        ),
+                      )),
+                    );
+                  }),
             ),
             CircleAvatar(
               radius: 50,
