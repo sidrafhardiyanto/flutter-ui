@@ -97,17 +97,21 @@ class _MyHomePageState extends State<MyHomePage> {
       ),
       body: Container(
         padding: const EdgeInsets.all(10),
-        child: const Column(
+        child: Column(
           children: [
             Text(
               "Discover the most modern furniture",
+              textAlign: TextAlign.center,
               style: TextStyle(
                   color: Colors.black,
                   fontSize: 22.0,
                   fontWeight: FontWeight.w500,
                   fontStyle: FontStyle.italic,
                   letterSpacing: 1),
-            )
+            ),
+            ElevatedButton(onPressed: () {},
+              child: Text("Keranjang")
+            ),
           ],
         ),
       ),
