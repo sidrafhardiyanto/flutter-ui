@@ -95,6 +95,7 @@ class _MyHomePageState extends State<MyHomePage> {
           ),
         ],
       ),
+      
       body: Container(
         padding: const EdgeInsets.all(10),
         child: Column(
@@ -121,8 +122,26 @@ class _MyHomePageState extends State<MyHomePage> {
               color: Colors.red,
               size: 36,
             ),
+            CircleAvatar(
+              radius: 50,
+              backgroundImage: NetworkImage('https://picsum.photos/200'),
+            ),
+            Row(
+              children: [
+                SizedBox(
+                  width: 180,
+                  child: ClipRRect(
+                    borderRadius: const BorderRadius.only(
+                      topLeft: Radius.circular(20),
+                      topRight: Radius.circular(20),
+                    ),
+                    child: Image.asset('assets/images/furniture/img_product_1.jpg'),
+                  ),
+                ),
+              ],
+            ),
           ],
-        ),
+        ), 
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: _incrementCounter,
