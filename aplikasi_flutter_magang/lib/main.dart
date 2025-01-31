@@ -105,6 +105,7 @@ class _MyHomePageState extends State<MyHomePage> {
                   color: Colors.black,
                   fontSize: 22.0,
                   fontWeight: FontWeight.w500,
+                  fontStyle: FontStyle.italic,
                   letterSpacing: 1),
             )
           ],
