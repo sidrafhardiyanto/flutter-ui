@@ -287,6 +287,20 @@ class _MyHomePageState extends State<MyHomePage> {
                 ),
               ],
             ),
+            Padding(
+              padding: EdgeInsets.only(
+                left: 20.0,
+                top: 30,
+                bottom: 40,
+              ),
+              child: Text(
+                "Categories",
+                style: TextStyle(
+                  fontSize: 16,
+                  fontWeight: FontWeight.w500,
+                ),
+              ),
+            ),
             Expanded(
               child: GridView.builder(
                   gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
