@@ -532,27 +532,37 @@ class PageTwo extends StatelessWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  // int _counter = 0;
+  List<Map<String, dynamic>> menuItems = [
+    {
+      "title": "Home",
+      "icon": Icons.home,
+    },
+    {
+      "title": "Chart",
+      "icon": Icons.shopping_cart,
+    },
+    {
+      "title": "Favorites",
+      "icon": Icons.star_border,
+    },
+    {
+      "title": "Account",
+      "icon": Icons.person,
+    },
+  ];
 
-  void _incrementCounter() {
+  int _selectedItem = 0;
+  String _text = "Home";
+
+  void _onItemTapped(int index) {
     setState(() {
-      // This call to setState tells the Flutter framework that something has
-      // changed in this State, which causes it to rerun the build method below
-      // so that the display can reflect the updated values. If we changed
-      // _counter without calling setState(), then the build method would not be
-      // called again, and so nothing would appear to happen.
-      // _counter++;
+      _selectedItem = index;
+      _text = menuItems[index]["title"];
     });
   }
 
   @override
   Widget build(BuildContext context) {
-    // This method is rerun every time setState is called, for instance as done
-    // by the _incrementCounter method above.
-    //
-    // The Flutter framework has been optimized to make rerunning build methods
-    // fast, so that you can just rebuild anything that needs updating rather
-    // than having to individually change instances of widgets.
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Theme.of(context).colorScheme.inversePrimary,
@@ -572,162 +582,13 @@ class _MyHomePageState extends State<MyHomePage> {
           ),
         ],
       ),
-      
       body: Container(
         padding: const EdgeInsets.all(10),
         child: Column(
           children: [
-            // SizedBox(
-            //   height: 300,
-            // //   child: MyListView(),
-            //   // child: MyWrap(),
-            //   // child: MyTextField(),
-            //   // child: MyDropDown(),
-            //   // child: MySwitch(),
-            //   // child: MyRadio(),
-            //   // child: MyCheckbox(),
-            //   // child: MyDialog(),
-            //   // child: MyBottomSheet(),
-            // ),
-            Padding(
-              padding: const EdgeInsets.all(10.0),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  ElevatedButton(
-                    onPressed: () {
-                      Navigator.of(context).push(
-                          MaterialPageRoute(builder: (context) => const PageTwo()));
-                    },
-                    child: const Text('Next Page'),
-                  ),
-                ],
-              ),
-            ),
             Text(
-              "Discover the most modern furniture",
-              textAlign: TextAlign.center,
-              style: TextStyle(
-                  color: Colors.black,
-                  fontSize: 22.0,
-                  fontWeight: FontWeight.w500,
-                  fontStyle: FontStyle.italic,
-                  letterSpacing: 1),
-            ),
-            Text(
-              "Stylish Chair",
-              style: TextStyle(
-                color: Colors.black,
-                fontSize: 14.0,
-                fontWeight: FontWeight.w500,
-              ),
-            ),
-            SizedBox(
-              height: 10,
-            ),
-            Text(
-              "Rp. 350.000",
-              style: TextStyle(
-                fontSize: 20,
-                color: Color(0xFF9A9390),
-                fontWeight: FontWeight.w400,
-                letterSpacing: 1,
-              ),
-            ),
-            Container(
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(12),
-                color: Colors.grey,
-              ),
-              child: IconButton(
-                icon: const Icon(Icons.arrow_back),
-                onPressed: () {},
-              ),
-            ),
-            const Text(
-              "Detail",
-              style: TextStyle(
-                fontSize: 24,
-                fontWeight: FontWeight.normal,
-              ),
-            ),
-            IconButton(
-              icon: const Icon(
-                Icons.share,
-                size: 32,
-              ),
-              onPressed: () {},
-            ),
-            ElevatedButton(onPressed: () {},
-              child: Text("Keranjang")
-            ),
-            Icon(
-              Icons.home,
-              size: 32,
-            ),
-            Icon(
-              Icons.favorite,
-              color: Colors.red,
-              size: 36,
-            ),
-            Stack(
-              clipBehavior: Clip.none,
-              children: [
-                Icon(
-                  Icons.shopping_cart,
-                  size: 50,
-                ),
-                Positioned(
-                  top: -4,
-                  right: -4,
-                  child: CircleAvatar(
-                    radius: 10,
-                    backgroundColor: Colors.red,
-                    child: Text(
-                      "1",
-                      style: TextStyle(
-                        fontSize: 10,
-                        color: Colors.white,
-                      ),
-                    ),
-                  ),
-                ),
-              ],
-            ),
-            Padding(
-              padding: EdgeInsets.all(20.0),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    "Size",
-                    style: TextStyle(
-                        fontSize: 18,
-                        color: Colors.grey,
-                        fontWeight: FontWeight.bold),
-                  ),
-                  SizedBox(
-                    height: 4,
-                  ),
-                  Text(
-                    "Height 120cm",
-                    style: TextStyle(
-                        fontSize: 16,
-                        color: Colors.grey,
-                        fontWeight: FontWeight.normal),
-                  ),
-                  SizedBox(
-                    height: 2,
-                  ),
-                  Text(
-                    "Width 80cm",
-                    style: TextStyle(
-                        fontSize: 16,
-                        color: Colors.grey,
-                        fontWeight: FontWeight.normal),
-                  ),
-                ],
-              ),
+              'Kamu klik: $_text',
+              style: Theme.of(context).textTheme.headlineMedium,
             ),
             Container(
               margin: const EdgeInsets.all(10.0),
@@ -797,85 +658,52 @@ class _MyHomePageState extends State<MyHomePage> {
                 ),
               ),
             ),
-            AspectRatio(
-              aspectRatio: 180 / 240,
-              child: Container(
-                color: Colors.red,
-              ),
-            ),
-            Expanded(
-              child: GridView.builder(
-                  gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                      crossAxisCount: 2),
-                  itemCount: 50,
-                  itemBuilder: (BuildContext context, int index) {
-                    return Container(
-                      height: 100,
-                      width: double.infinity,
-                      margin: const EdgeInsets.all(5),
-                      decoration: BoxDecoration(
-                        color: Colors.blue,
-                        borderRadius: BorderRadius.circular(20),
-                        boxShadow: [
-                          BoxShadow(
-                            color: Colors.black.withOpacity(0.2),
-                            offset: Offset.zero,
-                            blurRadius: 15,
-                          ),
-                        ],
-                      ),
-                      child: Center(
-                          child: Text(
-                        (index + 1).toString(),
-                        style: const TextStyle(
-                          fontSize: 16,
-                          color: Colors.white,
-                        ),
-                      )),
-                    );
-                  }),
-            ),
             CircleAvatar(
               radius: 50,
               backgroundImage: NetworkImage('https://picsum.photos/200'),
             ),
-            // Row(
-            //   children: [
-            //     SizedBox(
-            //       width: 180,
-            //       child: ClipRRect(
-            //         borderRadius: const BorderRadius.only(
-            //           topLeft: Radius.circular(20),
-            //           topRight: Radius.circular(20),
-            //         ),
-            //         child: Image.asset('assets/images/furniture/img_product_1.jpg'),
-            //       ),
-            //     ),
-            //   ],
-            // ),
           ],
         ), 
       ),
+      bottomNavigationBar: BottomNavigationBar(
+        backgroundColor: Colors.white,
+        showUnselectedLabels: false,
+        showSelectedLabels: false,
+        unselectedItemColor: Colors.black87,
+        elevation: 32,
+        type: BottomNavigationBarType.fixed,
+        selectedLabelStyle: const TextStyle(
+          height: 1.5,
+          fontSize: 12,
+        ),
+        unselectedLabelStyle: const TextStyle(
+          height: 1.5,
+          fontSize: 12,
+        ),
+        items: menuItems
+            .map(
+              (item) => BottomNavigationBarItem(
+                icon: Icon(item["icon"]),
+                label: item["title"],
+                activeIcon: Container(
+                  padding: const EdgeInsets.all(10),
+                  decoration: const BoxDecoration(
+                    color: Colors.grey,
+                    borderRadius: BorderRadius.all(Radius.circular(14)),
+                  ),
+                  child: Icon(item["icon"]),
+                ),
+              ),
+            )
+            .toList(),
+        currentIndex: _selectedItem,
+        selectedItemColor: Colors.white,
+        onTap: _onItemTapped,
+      ),
       floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
+        onPressed: () {},
         tooltip: 'Increment',
         child: const Icon(Icons.emoji_emotions, color: Colors.yellow),
-      ), // This trailing comma makes auto-formatting nicer for build methods.
-      bottomNavigationBar: BottomNavigationBar(
-        items: const [
-          BottomNavigationBarItem(
-            icon: Icon(Icons.home),
-            label: 'Home',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.mail),
-            label: 'Messages',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.person),
-            label: 'Profile',
-          ),
-        ],
       ),
     );
   }
