@@ -509,6 +509,22 @@ class _MyBottomSheetState extends State<MyBottomSheet> {
   }
 }
 
+class PageTwo extends StatelessWidget {
+  const PageTwo({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('Page Two'),
+      ),
+      body: Center(
+        child: Text('This is Page Two'),
+      ),
+    );
+  }
+}
+
 class _MyHomePageState extends State<MyHomePage> {
   // int _counter = 0;
 
@@ -567,6 +583,21 @@ class _MyHomePageState extends State<MyHomePage> {
             //   // child: MyDialog(),
             //   // child: MyBottomSheet(),
             // ),
+            Padding(
+              padding: const EdgeInsets.all(10.0),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  ElevatedButton(
+                    onPressed: () {
+                      Navigator.of(context).push(
+                          MaterialPageRoute(builder: (context) => const PageTwo()));
+                    },
+                    child: const Text('Next Page'),
+                  ),
+                ],
+              ),
+            ),
             Text(
               "Discover the most modern furniture",
               textAlign: TextAlign.center,
