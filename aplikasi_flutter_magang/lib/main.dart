@@ -596,6 +596,8 @@ class _MyHomePageState extends State<MyHomePage> {
   int _selectedItem = 0;
   String _text = "Home";
 
+  final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
+
   void _onItemTapped(int index) {
     setState(() {
       _selectedItem = index;
@@ -606,11 +608,14 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      key: _scaffoldKey,
       appBar: AppBar(
         backgroundColor: Theme.of(context).colorScheme.inversePrimary,
         title: Text(widget.title),
         leading: IconButton(
-          onPressed: () {},
+          onPressed: () {
+            _scaffoldKey.currentState?.openDrawer();
+          },
           icon: const Icon(Icons.menu),
         ),
         actions: [
@@ -623,6 +628,41 @@ class _MyHomePageState extends State<MyHomePage> {
             icon: const Icon(Icons.more_vert),
           ),
         ],
+      ),
+      drawer: Drawer(
+        child: ListView(
+          children: [
+            Container(
+              color: Colors.blue[100],
+              child: UserAccountsDrawerHeader(
+                decoration: BoxDecoration(
+                  color: Colors.grey[200],
+                ),
+                accountName: const Text(
+                  'Sidra Febrian Hardiyanto',
+                  style: TextStyle(color: Colors.black),
+                ),
+                accountEmail: const Text(
+                  "sidrafhardiyanto@karimunjawa.co.id",
+                  style: TextStyle(color: Colors.black),
+                ),
+                currentAccountPicture: const CircleAvatar(
+                  child: FlutterLogo(size: 50),
+                ),
+              ),
+            ),
+            ListTile(
+              title: const Text('Item 1'),
+              onTap: () {
+                Navigator.pop(context);
+              },
+            ),
+            ListTile(
+              title: const Text('Item 2'),
+              onTap: () {},
+            ),
+          ],
+        ),
       ),
       body: Container(
         padding: const EdgeInsets.all(10),
