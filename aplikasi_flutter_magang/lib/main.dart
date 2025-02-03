@@ -518,8 +518,9 @@ class PageTwo extends StatelessWidget {
       appBar: AppBar(
         title: Text('Page Two'),
       ),
-      body: Center(
-        child: Text('This is Page Two'),
+      body: Padding(
+        padding: EdgeInsets.all(10.0),
+        child: Text('Page Two'),
       ),
     );
   }
