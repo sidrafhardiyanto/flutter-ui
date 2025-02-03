@@ -664,92 +664,125 @@ class _MyHomePageState extends State<MyHomePage> {
           ],
         ),
       ),
-      body: Container(
-        padding: const EdgeInsets.all(10),
-        child: Column(
-          children: [
-            Text(
-              'Kamu klik: $_text',
-              style: Theme.of(context).textTheme.headlineMedium,
+      body: CustomScrollView(
+        slivers: [
+          const SliverAppBar(
+            pinned: true,
+            snap: true,
+            floating: true,
+            expandedHeight: 160,
+            flexibleSpace: FlexibleSpaceBar(
+              title: Text(
+                "UNISNU Jepara",
+                style: TextStyle(color: Colors.black),
+              ),
+              background: FlutterLogo(),
             ),
-            SizedBox(
-              height: 300,
-              child: MyTabBar(),
+          ),
+          SliverList(
+            delegate: SliverChildBuilderDelegate(
+              (context, index) {
+                return Container(
+                  color: index.isOdd ? Colors.white : Colors.blue[200],
+                  height: 100,
+                  child: Center(
+                    child: Text(
+                      "Item $index",
+                      textScaler: const TextScaler.linear(2),
+                    ),
+                  ),
+                );
+              },
+              childCount: 20,
             ),
-            Container(
-              margin: const EdgeInsets.all(10.0),
-              child: const Column(
-                children: [
-                  Row(
+          ),
+          SliverToBoxAdapter(
+            child: Column(
+              children: [
+                Text(
+                  'Kamu klik: $_text',
+                  style: Theme.of(context).textTheme.headlineMedium,
+                ),
+                SizedBox(
+                  height: 300,
+                  child: MyTabBar(),
+                ),
+                Container(
+                  margin: const EdgeInsets.all(10.0),
+                  child: const Column(
                     children: [
-                      Icon(
-                        Icons.arrow_back_ios,
-                      ),
-                      Expanded(
-                        child: Padding(
-                          padding: EdgeInsets.all(8.0),
-                          child: Text(
-                            "List checklist ",
-                            style: TextStyle(fontSize: 16),
+                      Row(
+                        children: [
+                          Icon(
+                            Icons.arrow_back_ios,
                           ),
-                        ),
+                          Expanded(
+                            child: Padding(
+                              padding: EdgeInsets.all(8.0),
+                              child: Text(
+                                "List checklist ",
+                                style: TextStyle(fontSize: 16),
+                              ),
+                            ),
+                          ),
+                          Icon(
+                            Icons.check,
+                            color: Colors.blue,
+                          )
+                        ],
                       ),
-                      Icon(
-                        Icons.check,
-                        color: Colors.blue,
-                      )
                     ],
                   ),
-                ],
-              ),
-            ),
-            Center(
-              child: ElevatedButton(
-                onPressed: () {
-                  ScaffoldMessenger.of(context).showSnackBar(
-                    const SnackBar(
+                ),
+                Center(
+                  child: ElevatedButton(
+                    onPressed: () {
+                      ScaffoldMessenger.of(context).showSnackBar(
+                        const SnackBar(
+                          backgroundColor: Colors.blue,
+                          content: Text('Your request is succesful'),
+                        ),
+                      );
+                    },
+                    style: ElevatedButton.styleFrom(
                       backgroundColor: Colors.blue,
-                      content: Text('Your request is succesful'),
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(20.0),
+                      ),
+                      shadowColor: Colors.grey[20],
+                      elevation: 5.0,
                     ),
-                  );
-                },
-                style: ElevatedButton.styleFrom(
-                  backgroundColor: Colors.blue,
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(20.0),
+                    child: Text(
+                      "Add To Cart".toUpperCase(),
+                      style: const TextStyle(
+                          fontSize: 20.0,
+                          fontWeight: FontWeight.w500,
+                          color: Colors.white),
+                    ),
                   ),
-                  shadowColor: Colors.grey[20],
-                  elevation: 5.0,
                 ),
-                child: Text(
-                  "Add To Cart".toUpperCase(),
-                  style: const TextStyle(
-                      fontSize: 20.0,
+                Padding(
+                  padding: EdgeInsets.only(
+                    left: 20.0,
+                    top: 30,
+                    bottom: 40,
+                  ),
+                  child: Text(
+                    "Categories",
+                    style: TextStyle(
+                      fontSize: 16,
                       fontWeight: FontWeight.w500,
-                      color: Colors.white),
+                    ),
+                  ),
                 ),
-              ),
-            ),
-            Padding(
-              padding: EdgeInsets.only(
-                left: 20.0,
-                top: 30,
-                bottom: 40,
-              ),
-              child: Text(
-                "Categories",
-                style: TextStyle(
-                  fontSize: 16,
-                  fontWeight: FontWeight.w500,
+                CircleAvatar(
+                  radius: 50,
+                  backgroundImage: NetworkImage('https://picsum.photos/200'),
                 ),
-              ),
+              ],
             ),
-            CircleAvatar(
-              radius: 50,
-              backgroundImage: NetworkImage('https://picsum.photos/200'),
-            ),
-          ],
-        ), 
+          ),
+        ],
       ),
       bottomNavigationBar: BottomNavigationBar(
         backgroundColor: Colors.white,
