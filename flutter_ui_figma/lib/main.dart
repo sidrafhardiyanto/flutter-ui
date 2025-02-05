@@ -14,7 +14,8 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: HomePage(), // Halaman awal yang ditampilkan
+      // home: HomePage(), // Halaman awal yang ditampilkan
+      home: DetailPage(), // Halaman awal yang ditampilkan
       routes: {
         '/detail': (context) => DetailPage(), // Rute untuk DetailPage
       },
